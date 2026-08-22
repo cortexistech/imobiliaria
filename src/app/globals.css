@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #141414;
+  --paper: #e8ebe6;
+  --field: #0f5c40;
+  --field-deep: #083d2a;
+  --survey: #f0c43c;
+  --slate: #4e5853;
+  --mist: #d0d6d1;
+  --lead: #9b2c1f;
+  --white: #ffffff;
+  --bronze: #9a7340;
+  --on-survey: #141414;
+  --on-field: #ffffff;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-field: var(--field);
+  --color-field-deep: var(--field-deep);
+  --color-survey: var(--survey);
+  --color-slate: var(--slate);
+  --color-mist: var(--mist);
+  --color-lead: var(--lead);
+  --color-bronze: var(--bronze);
+  --color-on-survey: var(--on-survey);
+  --color-on-field: var(--on-field);
+  --font-display: var(--font-bricolage);
+  --font-sans: var(--font-source);
+  --font-mono: var(--font-ibm);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+body {
+  font-family: var(--font-source), "Segoe UI", sans-serif;
+  min-height: 100%;
+  font-feature-settings: "ss01";
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-bricolage), "Trebuchet MS", sans-serif;
+  letter-spacing: -0.045em;
+  font-weight: 700;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--survey);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--survey);
+  color: var(--on-survey);
+}
+
+/* Amarelo leva sempre preto; verde leva sempre branco — mesmo com herança do pai */
+.bg-survey {
+  color: var(--on-survey) !important;
+}
+.bg-field {
+  color: var(--on-field) !important;
+}
+
+.tape-bar {
+  height: 5px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--ink) 0 7px,
+    var(--survey) 7px 14px
+  );
+}
+
+.tape-bar-thin {
+  height: 3px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--ink) 0 5px,
+    var(--survey) 5px 10px
+  );
+}
+
+.flow-grid {
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(rgba(11, 18, 16, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11, 18, 16, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.folio {
+  position: relative;
+}
+
+.folio-tick {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.folio-tick-tl {
+  top: 8px;
+  left: 8px;
+  border-top: 2px solid var(--ink);
+  border-left: 2px solid var(--ink);
+}
+
+.folio-tick-tr {
+  top: 8px;
+  right: 8px;
+  border-top: 2px solid var(--ink);
+  border-right: 2px solid var(--ink);
+}
+
+.folio-tick-bl {
+  bottom: 8px;
+  left: 8px;
+  border-bottom: 2px solid var(--ink);
+  border-left: 2px solid var(--ink);
+}
+
+.folio-tick-br {
+  bottom: 8px;
+  right: 8px;
+  border-bottom: 2px solid var(--ink);
+  border-right: 2px solid var(--ink);
+}
+
+.folio-on-ink .folio-tick-tl,
+.folio-on-ink .folio-tick-tr,
+.folio-on-ink .folio-tick-bl,
+.folio-on-ink .folio-tick-br {
+  border-color: var(--survey);
+}
+
+.surface {
+  background: var(--white);
+  border: 1px solid rgba(11, 18, 16, 0.1);
+  box-shadow: 0 1px 0 rgba(11, 18, 16, 0.04);
+}
+
+.imobi-pin {
+  background: transparent !important;
+  border: none !important;
+}
+
+.imobi-pin span {
+  display: block;
+  width: 14px;
+  height: 14px;
+  background: var(--survey);
+  border: 2px solid var(--ink);
+  transform: rotate(45deg);
+  box-shadow: 0 3px 8px rgba(11, 18, 16, 0.3);
+}
+
+.leaflet-container {
+  font-family: inherit;
+  background: #d4dbd5;
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  border-radius: 0;
+  box-shadow: 0 10px 28px rgba(11, 18, 16, 0.18);
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

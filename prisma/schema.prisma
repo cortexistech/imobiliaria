@@ -1,0 +1,91 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Tenant {
+  id         String     @id @default(uuid())
+  name       String
+  logoUrl    String?
+  brandColor String     @default("#134E3A")
+  phone      String?
+  users      User[]
+  properties Property[]
+  leads      Lead[]
+  createdAt  DateTime   @default(now())
+}
+
+model User {
+  id           String     @id @default(uuid())
+  tenantId     String
+  name         String
+  email        String     @unique
+  phone        String
+  passwordHash String
+  role         Role       @default(AGENT)
+  properties   Property[]
+  leads        Lead[]
+  tenant       Tenant     @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  createdAt    DateTime   @default(now())
+
+  @@index([tenantId])
+}
+
+model Property {
+  id          String         @id @default(uuid())
+  tenantId    String
+  agentId     String
+  title       String
+  description String         @default("")
+  price       Decimal
+  status      PropertyStatus @default(PENDING)
+  type        String
+  address     String
+  city        String         @default("")
+  bedrooms    Int            @default(0)
+  bathrooms   Int            @default(0)
+  area        Float          @default(0)
+  latitude    Float
+  longitude   Float
+  images      Json
+  agent       User           @relation(fields: [agentId], references: [id])
+  tenant      Tenant         @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  leads       Lead[]
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  @@index([tenantId, status])
+  @@index([agentId])
+}
+
+model Lead {
+  id         String   @id @default(uuid())
+  tenantId   String
+  propertyId String
+  agentId    String
+  name       String
+  phone      String
+  message    String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  agent      User     @relation(fields: [agentId], references: [id])
+  tenant     Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now())
+
+  @@index([tenantId])
+  @@index([agentId])
+}
+
+enum Role {
+  ADMIN
+  AGENT
+}
+
+enum PropertyStatus {
+  DRAFT
+  PENDING
+  PUBLISHED
+}
