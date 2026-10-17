@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
-import { PropertyStatus, Role } from "@prisma/client";
+import { PropertyStatus, Role } from "@/generated/prisma/enums";
 import { prisma } from "@/lib/prisma";
 import { requireUser } from "@/lib/session";
 import { PROPERTY_TYPES } from "@/lib/constants";

@@ -2,7 +2,7 @@
 
 import { hash } from "bcryptjs";
 import { z } from "zod";
-import { Role } from "@prisma/client";
+import { Role } from "@/generated/prisma/enums";
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { requireAdmin } from "@/lib/session";

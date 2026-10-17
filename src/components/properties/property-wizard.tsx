@@ -2,7 +2,7 @@
 
 import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { PropertyStatus } from "@prisma/client";
+import { PropertyStatus } from "@/generated/prisma/enums";
 import { ImagePlus, Trash2 } from "lucide-react";
 import { PROPERTY_TYPES } from "@/lib/constants";
 import { DEFAULT_MAP_CENTER } from "@/lib/constants";

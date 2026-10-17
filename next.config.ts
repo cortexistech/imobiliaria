@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "res.cloudinary.com" },
     ],
   },
-  serverExternalPackages: ["@prisma/client", "bcryptjs"],
+  serverExternalPackages: ["better-sqlite3", "bcryptjs"],
   async redirects() {
     return [
       { source: "/t/:slug", destination: "/", permanent: false },

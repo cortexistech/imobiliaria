@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { PropertyStatus, Role } from "@prisma/client";
+import { PropertyStatus, Role } from "@/generated/prisma/enums";
 import { prisma } from "@/lib/prisma";
 import { requireUser } from "@/lib/session";
 import { asImages } from "@/lib/utils";

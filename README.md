@@ -38,9 +38,13 @@ Painel interno: [/dashboard](http://localhost:3000/dashboard)
 
 | Variável | Função |
 |----------|--------|
-| `DATABASE_URL` | `file:./dev.db` local, ou URL PostgreSQL em produção |
+| `DATABASE_URL` | `file:./prisma/dev.db` local (relativo à raiz do projeto), ou URL PostgreSQL em produção |
 | `AUTH_SECRET` | Segredo JWT (`openssl rand -base64 32`) |
 | `AUTH_URL` | URL pública do site |
 | `WHATSAPP_API_URL` / `WHATSAPP_API_KEY` | Disparo de leads (se vazio, o pedido fica gravado e o envio corre em simulação) |
 | `CLOUDINARY_CLOUD_NAME` / `CLOUDINARY_UPLOAD_PRESET` | Fotografias na CDN; senão grava em `/public/uploads` |
 # ImobiFlow
+
+## PostgreSQL em produção
+
+Altere `provider = "postgresql"` em `prisma/schema.prisma`, instale `@prisma/adapter-pg` e, em `src/lib/prisma.ts` e `prisma/seed.ts`, use `new PrismaPg({ connectionString: process.env.DATABASE_URL })` no lugar de `PrismaBetterSqlite3`.

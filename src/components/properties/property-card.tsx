@@ -2,7 +2,7 @@ import Link from "next/link";
 import { asImages, formatPrice } from "@/lib/utils";
 import { StatusBadge } from "@/components/properties/status-badge";
 import { FolioFrame } from "@/components/brand/logo";
-import type { Property, PropertyStatus } from "@prisma/client";
+import type { Property, PropertyStatus } from "@/generated/prisma/client";
 
 export function PropertyCard({
   property,
