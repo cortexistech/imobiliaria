@@ -1,4 +1,4 @@
-import { Role } from "@prisma/client";
+import { Role } from "@/generated/prisma/enums";
 import { requireUser } from "@/lib/session";
 import { PropertyWizard } from "@/components/properties/property-wizard";
 

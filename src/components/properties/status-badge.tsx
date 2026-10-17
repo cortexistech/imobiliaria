@@ -1,6 +1,6 @@
 import { STATUS_LABEL } from "@/lib/constants";
 import { Badge } from "@/components/ui/badge";
-import type { PropertyStatus } from "@prisma/client";
+import type { PropertyStatus } from "@/generated/prisma/enums";
 
 const tone: Record<PropertyStatus, "mist" | "survey" | "field"> = {
   DRAFT: "mist",

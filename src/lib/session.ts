@@ -1,6 +1,6 @@
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
-import { Role } from "@prisma/client";
+import { Role } from "@/generated/prisma/enums";
 import { prisma } from "@/lib/prisma";
 
 export async function getSession() {

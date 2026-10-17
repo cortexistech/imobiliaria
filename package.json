@@ -8,20 +8,19 @@
     "start": "next start",
     "lint": "eslint",
     "db:generate": "prisma generate",
-    "db:push": "prisma db push",
-    "db:seed": "tsx prisma/seed.ts",
-    "db:reset": "prisma db push --force-reset && tsx prisma/seed.ts",
+    "db:push": "prisma db push && prisma generate",
+    "db:seed": "prisma db seed",
+    "db:reset": "prisma db push --force-reset && prisma generate && prisma db seed",
     "postinstall": "prisma generate"
   },
-  "prisma": {
-    "seed": "tsx prisma/seed.ts"
-  },
   "dependencies": {
-    "@prisma/client": "^6.19.2",
+    "@prisma/adapter-better-sqlite3": "^7.10.1",
+    "@prisma/client": "^7.10.1",
     "bcryptjs": "^3.0.3",
+    "dotenv": "^18.0.8",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.544.0",
-    "next": "16.3.2",
+    "next": "16.3.8",
     "next-auth": "5.0.0-beta.32",
     "react": "19.2.8",
     "react-dom": "19.2.8",
@@ -36,8 +35,8 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.3.2",
-    "prisma": "^6.19.2",
+    "eslint-config-next": "16.3.8",
+    "prisma": "^7.10.1",
     "tailwindcss": "^4",
     "tsx": "^4.20.6",
     "typescript": "^5"

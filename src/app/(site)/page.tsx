@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/generated/prisma/client";
 import { requireAgency } from "@/lib/tenant";
 import { prisma } from "@/lib/prisma";
 import { propertyHref } from "@/lib/constants";
